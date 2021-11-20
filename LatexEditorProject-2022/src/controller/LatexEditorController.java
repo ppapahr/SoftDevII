@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.HashMap;
+import java.util.*;
 
 import controller.commands.AddLatexCommand;
 import controller.commands.ChangeVersionsStrategyCommand;
@@ -20,19 +20,22 @@ public class LatexEditorController{
 	
 	public LatexEditorController(VersionsManager versionsManager) {
 		CommandFactory commandFactory = new CommandFactory(versionsManager);
-		
 		commands = new HashMap<String, Command>(); 
-		commands.put("addLatex", commandFactory.createCommand("addLatex"));
-		commands.put("changeVersionsStrategy", commandFactory.createCommand("changeVersionsStrategy"));
-		commands.put("create", commandFactory.createCommand("create"));
-		commands.put("disableVersionsManagement", commandFactory.createCommand("disableVersionsManagement"));
-		commands.put("edit", commandFactory.createCommand("edit"));
-		commands.put("enableVersionsManagement", commandFactory.createCommand("enableVersionsManagement"));
-		commands.put("load", commandFactory.createCommand("load"));
-		commands.put("rollbackToPreviousVersion", commandFactory.createCommand("rollbackToPreviousVersion"));
-		commands.put("save", commandFactory.createCommand("save"));
-		
-	}
+		Map<Integer, String> commandNames = new HashMap<>();
+		commandNames.put(1, "addLatex");
+		commandNames.put(2, "changeVersionsStrategy");
+		commandNames.put(3, "create");
+		commandNames.put(4, "disableVersionsManagement");
+		commandNames.put(5, "edit");
+		commandNames.put(6, "enableVersionsManagement");
+		commandNames.put(7, "load");
+		commandNames.put(8, "rollbackToPreviousVersion");
+		commandNames.put(9, "save");
+
+		for (String name : 	commandNames.values())
+			commands.put(name, commandFactory.createCommand(name));
+		//System.out.println(commands);
+	} 
 	
 	public void enact(String command) {
 		commands.get(command).execute();

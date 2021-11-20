@@ -1,3 +1,4 @@
+
 package controller.commands;
 
 import model.VersionsManager;
@@ -17,5 +18,4 @@ public class AddLatexCommand implements Command  {
 		// TODO Auto-generated method stub
 		versionsManager.saveContents();
 	}
-
 }
