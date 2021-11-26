@@ -17,8 +17,11 @@ import model.VersionsManager;
 
 public class LatexEditorController{
 	private HashMap<String, Command> commands;
+	private VersionsManager versionsManager;
+	
 	
 	public LatexEditorController(VersionsManager versionsManager) {
+		this.versionsManager = versionsManager;
 		CommandFactory commandFactory = new CommandFactory(versionsManager);
 		commands = new HashMap<String, Command>(); 
 		Map<Integer, String> commandNames = new HashMap<>();
@@ -39,5 +42,9 @@ public class LatexEditorController{
 	
 	public void enact(String command) {
 		commands.get(command).execute();
+	}
+	
+	public VersionsManager getVersionsManager() {
+		return versionsManager;
 	}
 }

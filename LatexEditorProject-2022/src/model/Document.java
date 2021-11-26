@@ -23,16 +23,51 @@ public class Document {
 	public Document() {
 		// TODO Auto-generated constructor stub
 		this.contents = "";
+		this.author = "";
+		this.date = "";
+		this.copyright = "";
 	}
 
 
 	public String getContents() {
 		return contents;
 	}
-
+	
+	public String getAuthor() {
+		return author;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+	
+	public String getCopyright() {
+		return copyright;
+	}
+	
+	public String getVersionID() {
+		return versionID;
+	}
+	
 
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public void setCopyright(String copyright) {
+		this.copyright = copyright;
+	}
+	
+	public void setVersionID(String versionID) {
+		this.versionID = versionID;
 	}
 
 
@@ -55,12 +90,6 @@ public class Document {
 	public void changeVersion() {
 		int n = Integer.parseInt(versionID);
 		versionID = (n + 1) + "";
-	}
-
-
-	public String getVersionID() {
-		// TODO Auto-generated method stub
-		return versionID;
 	}
 	
 }
