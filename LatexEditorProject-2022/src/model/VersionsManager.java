@@ -31,7 +31,7 @@ public class VersionsManager {
 	}
 	
 	public void setStrategy(VersionsStrategy strategy) {
-		this.strategy = strategy;
+		this.strategy = strategy; // DEAD LMAOOOO
 	}
 	
 	public void setCurrentVersion(Document document) {
@@ -39,10 +39,10 @@ public class VersionsManager {
 	}
 	
 	public Document setPreviousVersion() {
-		return null;
+		return null; // DEAD KLMAOOO
 	}
 	
-	public void rollbackToPreviousVersion() {
+	public void rollbackToPreviousVersion() { // DEAD XDDDD
 		
 	}
 
@@ -72,7 +72,7 @@ public class VersionsManager {
 		if(strategyType.equals("volatile") && strategy instanceof VolatileVersionsStrategy) {
 			enable();
 		}
-		else if(strategyType.equals("stable") && strategy instanceof VolatileVersionsStrategy) {
+		else if(strategyType.equals("stable") && strategy instanceof VolatileVersionsStrategy) { // THIS IS CHANGE STRATEGY, DELETE IT FROM LINE 75-87
 			//allagh apo to ena sto allo
 			VersionsStrategy newStrategy = new StableVersionsStrategy();
 			newStrategy.setEntireHistory(strategy.getEntireHistory());
