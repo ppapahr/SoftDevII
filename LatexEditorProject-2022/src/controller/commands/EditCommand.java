@@ -2,13 +2,11 @@ package controller.commands;
 
 import model.VersionsManager;
 
-public class EditCommand implements Command {
-	private VersionsManager versionsManager;
+public class EditCommand extends CommandTemplate {
 	
 	
 	public EditCommand(VersionsManager versionsManager) {
-		super();
-		this.versionsManager = versionsManager;
+		super(versionsManager);
 	}
 
 

@@ -2,12 +2,10 @@ package controller.commands;
 
 import model.VersionsManager;
 
-public class LoadCommand implements Command {
-	private VersionsManager versionsManager;
+public class LoadCommand extends CommandTemplate {
 	
 	public LoadCommand(VersionsManager versionsManager) {
-		super();
-		this.versionsManager = versionsManager;
+		super(versionsManager);
 	}
 
 	public VersionsManager getVersionsManager() {

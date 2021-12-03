@@ -173,6 +173,11 @@ public class MainWindow {
 		mnFile.add(mntmSaveFile);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);;
+			}
+		});
 		mnFile.add(mntmExit);
 		
 		

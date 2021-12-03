@@ -3,13 +3,10 @@ package controller.commands;
 
 import model.VersionsManager;
 
-public class AddLatexCommand implements Command  {
-	private VersionsManager versionsManager;
-	
+public class AddLatexCommand extends CommandTemplate  {	
 	
 	public AddLatexCommand(VersionsManager versionsManager) {
-		super();
-		this.versionsManager = versionsManager;
+		super(versionsManager);
 	}
 
 

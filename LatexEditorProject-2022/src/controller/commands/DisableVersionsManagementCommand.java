@@ -2,13 +2,10 @@ package controller.commands;
 
 import model.VersionsManager;
 
-public class DisableVersionsManagementCommand implements Command {
-
-	private VersionsManager versionsManager;
+public class DisableVersionsManagementCommand extends CommandTemplate {
 	
 	public DisableVersionsManagementCommand(VersionsManager versionsManager) {
-		super();
-		this.versionsManager = versionsManager;
+		super(versionsManager);
 	}
 
 	@Override

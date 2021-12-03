@@ -4,14 +4,12 @@ import model.Document;
 import model.DocumentManager;
 import model.VersionsManager;
 
-public class CreateCommand implements Command {
+public class CreateCommand extends CommandTemplate {
 	private DocumentManager documentManager;
-	private VersionsManager versionsManager;
 	
 	public CreateCommand(DocumentManager documentManager, VersionsManager versionsManager) {
-		super();
+		super(versionsManager);
 		this.documentManager = documentManager;
-		this.versionsManager = versionsManager;
 	}
 
 	@Override
