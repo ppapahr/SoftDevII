@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class OpeningWindow {
 
 	private JFrame frame;
-	private LatexEditorView latexEditorView;
+	private VersionsManager versionsManager;
 	/**
 	 * Launch the application.
 	 */
@@ -40,11 +40,10 @@ public class OpeningWindow {
 	 */
 	public OpeningWindow() {
 		VersionsStrategy versionsStrategy = new VolatileVersionsStrategy();
-		latexEditorView = new LatexEditorView();
-		VersionsManager versionsManager = new VersionsManager(versionsStrategy, latexEditorView);
+		versionsManager = new VersionsManager();
+		versionsManager.setStrategy(versionsStrategy);
 		LatexEditorController controller = new LatexEditorController(versionsManager);
-		latexEditorView.setController(controller);
-		latexEditorView.setVersionsManager(versionsManager);
+		versionsManager.setController(controller);
 		initialize();
 		frame.setVisible(true);
 	}
@@ -61,7 +60,7 @@ public class OpeningWindow {
 		JButton btnCreateNewDocument = new JButton("Create New Document");
 		btnCreateNewDocument.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ChooseTemplate chooseTemplate = new ChooseTemplate(latexEditorView, "opening");
+				ChooseTemplate chooseTemplate = new ChooseTemplate(versionsManager, "opening");
 				frame.dispose();
 			}
 		});
