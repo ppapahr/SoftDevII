@@ -1,6 +1,7 @@
 package controller;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.commands.AddLatexCommand;
 import controller.commands.ChangeVersionsStrategyCommand;
@@ -18,25 +19,20 @@ import model.VersionsManager;
 public class LatexEditorController{
 	private HashMap<String, Command> commands;
 	private VersionsManager versionsManager;
-	
+	private String [] stringNames = new String [] {"addLatex", "changeVersionsStrategy","create","disableVersionsManagement","edit","enableVersionsManagement","load","rollbackToPreviousVersion","save"};
 	
 	public LatexEditorController(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 		CommandFactory commandFactory = new CommandFactory(versionsManager);
 		commands = new HashMap<String, Command>(); 
 		Map<Integer, String> commandNames = new HashMap<>();
-		commandNames.put(1, "addLatex");
-		commandNames.put(2, "changeVersionsStrategy");
-		commandNames.put(3, "create");
-		commandNames.put(4, "disableVersionsManagement");
-		commandNames.put(5, "edit");
-		commandNames.put(6, "enableVersionsManagement");
-		commandNames.put(7, "load");
-		commandNames.put(8, "rollbackToPreviousVersion");
-		commandNames.put(9, "save");
-
-		for (String name : 	commandNames.values())
-			commands.put(name, commandFactory.createCommand(name));
+		
+		for(int k=0; k<stringNames.length; k++) {
+			commandNames.put(k, stringNames[k]);
+			commands.put(stringNames[k], commandFactory.createCommand(stringNames[k]));
+		}
+		//for (String name : 	commandNames.values())
+			//commands.put(name, commandFactory.createCommand(name));
 		//System.out.println(commands);
 	} 
 	
