@@ -2,18 +2,8 @@ package controller;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import controller.commands.AddLatexCommand;
-import controller.commands.ChangeVersionsStrategyCommand;
 import controller.commands.Command;
 import controller.commands.CommandFactory;
-import controller.commands.CreateCommand;
-import controller.commands.DisableVersionsManagementCommand;
-import controller.commands.EditCommand;
-import controller.commands.EnableVersionsManagementCommand;
-import controller.commands.LoadCommand;
-import controller.commands.RollbackToPreviousVersionCommand;
-import controller.commands.SaveCommand;
 import model.VersionsManager;
 
 public class LatexEditorController{
@@ -31,9 +21,6 @@ public class LatexEditorController{
 			commandNames.put(k, stringNames[k]);
 			commands.put(stringNames[k], commandFactory.createCommand(stringNames[k]));
 		}
-		//for (String name : 	commandNames.values())
-			//commands.put(name, commandFactory.createCommand(name));
-		//System.out.println(commands);
 	} 
 	
 	public void enact(String command) {
