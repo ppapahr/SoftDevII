@@ -5,12 +5,14 @@ import java.util.Map;
 import controller.commands.Command;
 import controller.commands.CommandFactory;
 import model.VersionsManager;
+import controller.commands.AddLatexCommand;
 
 public class LatexEditorController{
 	private HashMap<String, Command> commands;
 	private VersionsManager versionsManager;
 	private String [] stringNames = new String [] {"addLatex", "changeVersionsStrategy","create","disableVersionsManagement","edit","enableVersionsManagement","load","rollbackToPreviousVersion","save"};
-	
+	private AddLatexCommand addLatexCommand;
+
 	public LatexEditorController(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 		CommandFactory commandFactory = new CommandFactory(versionsManager);
@@ -27,6 +29,10 @@ public class LatexEditorController{
 		commands.get(command).execute();
 	}
 	
+	public String putContents(String type, String before, String after) {
+		addLatexCommand = new AddLatexCommand(versionsManager);
+		return addLatexCommand.editContents(type, before, after);
+	}
 	public VersionsManager getVersionsManager() {
 		return versionsManager;
 	}
