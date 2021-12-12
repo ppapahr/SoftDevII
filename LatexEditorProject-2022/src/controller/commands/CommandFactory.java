@@ -1,7 +1,5 @@
 package controller.commands;
 
-import java.util.HashMap;
-
 import model.DocumentManager;
 import model.VersionsManager;
 

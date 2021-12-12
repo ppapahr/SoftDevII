@@ -50,9 +50,12 @@ public class DocumentManager {
 			Path fileName = Path.of("templates\\letter.txt");
 		    return Files.readString(fileName);
 		}
-		else {
+		else if(type.equals("reportTemplate")) {
 			Path fileName = Path.of("templates\\report.txt");
 		    return Files.readString(fileName);
+		}
+		else {
+			return "";
 		}
 	}
 	

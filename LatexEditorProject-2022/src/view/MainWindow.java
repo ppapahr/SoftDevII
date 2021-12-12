@@ -1,13 +1,9 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JTextPane;
-
 import model.Document;
 import model.VersionsManager;
 import model.strategies.StableVersionsStrategy;

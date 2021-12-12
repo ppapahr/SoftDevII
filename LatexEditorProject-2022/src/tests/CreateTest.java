@@ -1,170 +1,172 @@
 package tests;
 
-import controller.*;
 import controller.commands.*;
 import model.*;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
+import org.junit.Test;
 
-class CreateCommandTest {
+public class CreateTest {
 	
 	private DocumentManager documentManager = new DocumentManager();
-	private LatexEditorController latexEditorController = new LatexEditorController();
-	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController.getVersionsManager());
+	private VersionsManager versionsManager = new VersionsManager();
+	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
+	
 
 	@Test
-	void test1() {
+	public void test1() {
 		
-		latexEditorController.setType("articleTemplate");
+		versionsManager.setType("articleTemplate");
 		createCommand.execute();
 		
-		String contents = "\\documentclass[11pt,twocolumn,a4paper]{article}\n\n"+
-
-				"\\begin{document}\n"+
-				"\\title{Article: How to Structure a LaTeX Document}\n"+
-				"\\author{Author1 \\and Author2 \\and ...}\n"+
-				"\\date{\\today}\n\n"+
-
-				"\\maketitle\n\n"+
-
-				"\\section{Section Title 1}\n\n"+
-
-				"\\section{Section Title 2}\n\n"+
-
-				"\\section{Section Title.....}\n\n"+
-
-				"\\section{Conclusion}\n\n"+
-
-				"\\section*{References}\n\n"+
-
-				"\\end{document}\n";
-		String actualContents = latexEditorController.getVersionsManager().getCurrentDocument().getContents();
+		String contents = "\\documentclass[11pt,twocolumn,a4paper]{article}\r\n" + 
+				"\\usepackage{graphicx}\r\n" + 
+				"\r\n" + 
+				"\\begin{document}\r\n" + 
+				"\r\n" + 
+				"\\title{Article: How to Structure a LaTeX Document}\r\n" + 
+				"\\author{Author1 \\and Author2 \\and ...}\r\n" + 
+				"\\date{\\today}\r\n" + 
+				"\\maketitle\r\n" + 
+				"\r\n" + 
+				"\\section{Section Title 1}\r\n" + 
+				"\r\n" + 
+				"\\section{Section Title 2}\r\n" + 
+				"\r\n" + 
+				"\\section{Section Title.....}\r\n" + 
+				"\r\n" + 
+				"\\section{Conclusion}\r\n" + 
+				"\r\n" + 
+				"\\section*{References}\r\n" + 
+				"\r\n" + 
+				"\\end{document}";
+		String actualContents = versionsManager.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 
 	@Test
-	void test2() {
+	public void test2() {
 		
-		latexEditorController.setType("letterTemplate");
+		versionsManager.setType("letterTemplate");
 		createCommand.execute();
 		
-		String contents = "\\documentclass{letter}\n"+
-				"\\usepackage{hyperref}\n"+
-				"\\signature{Sender's Name}\n"+
-				"\\address{Sender's address...}\n"+
-				"\\begin{document}\n\n"+
-
-				"\\begin{letter}{Destination address....}\n"+
-				"\\opening{Dear Sir or Madam:}\n\n"+
-
-				"I am writing to you .......\n\n\n"+
-
-
-				"\\closing{Yours Faithfully,}\n"+
-
-				"\\ps\n\n"+
-
-				"P.S. text .....\n\n"+
-
-				"\\encl{Copyright permission form}\n\n"+
-
-				"\\end{letter}\n"+
-				"\\end{document}\n";
-		String actualContents = latexEditorController.getVersionsManager().getCurrentDocument().getContents();
+		String contents = "\\documentclass{letter}\r\n" + 
+				"\\usepackage{hyperref}\r\n" + 
+				"\\signature{Sender's Name}\r\n" + 
+				"\\address{Sender's address...}\r\n" + 
+				"\\begin{document}\r\n" + 
+				"\r\n" + 
+				"\\begin{letter}{Destination address....}\r\n" + 
+				"\\opening{Dear Sir or Madam:}\r\n" + 
+				"\r\n" + 
+				"I am writing to you ....... \r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"\\closing{Yours Faithfully,}\r\n" + 
+				"\r\n" + 
+				"\\ps\r\n" + 
+				"\r\n" + 
+				"P.S. text ..... \r\n" + 
+				"\r\n" + 
+				"\\encl{Copyright permission form}\r\n" + 
+				"\r\n" + 
+				"\\end{letter}\r\n" + 
+				"\\end{document}";
+		String actualContents = versionsManager.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 	
 	@Test
-	void test3() {
+	public void test3() {
 		
-		latexEditorController.setType("reportTemplate");
+		versionsManager.setType("reportTemplate");
 		createCommand.execute();
 		
-		String contents = "\\documentclass[11pt,a4paper]{report}\n\n"+
-
-				"\\begin{document}\n"+
-				"\\title{Report Template: How to Structure a LaTeX Document}\n"+
-				"\\author{Author1 \\and Author2 \\and ...}\n"+
-				"\\date{\\today}\n"+
-				"\\maketitle\n\n"+
-
-				"\\begin{abstract}\n"+
-				"Your abstract goes here...\n"+
-				"...\n"+
-				"\\end{abstract}\n\n"+
-
-				"\\chapter{Introduction}\n"+
-				"\\section{Section Title 1}\n"+
-				"\\section{Section Title 2}\n"+
-				"\\section{Section Title.....}\n\n"+
-
-				"\\chapter{....}\n\n"+
-
-				"\\chapter{Conclusion}\n\n\n"+
-
-
-				"\\chapter*{References}\n\n"+
-
-				"\\end{document}\n";
-		String actualContents = latexEditorController.getVersionsManager().getCurrentDocument().getContents();
+		String contents = "\\documentclass[11pt,a4paper]{report}\r\n" + 
+				"\r\n" + 
+				"\\usepackage{graphicx}\r\n" + 
+				"\\begin{document}\r\n" + 
+				"\\title{Report Template: How to Structure a LaTeX Document}\r\n" + 
+				"\\author{Author1 \\and Author2 \\and ...}\r\n" + 
+				"\\date{\\today}\r\n" + 
+				"\\maketitle\r\n" + 
+				"\r\n" + 
+				"\\begin{abstract}\r\n" + 
+				"Your abstract goes here... \r\n" + 
+				"... \r\n" + 
+				"\\end{abstract}\r\n" + 
+				"\r\n" + 
+				"\\chapter{First Chapter}\r\n" + 
+				"\\section{Section Title 1}\r\n" + 
+				"\\section{Section Title 2}\r\n" + 
+				"\\section{Section Title.....}\r\n" + 
+				"\r\n" + 
+				"\\chapter{....}\r\n" + 
+				"\\chapter{Conclusion}\r\n" + 
+				"\r\n" + 
+				"\r\n" + 
+				"\\chapter*{References}\r\n" + 
+				"\r\n" + 
+				"\\end{document}";
+		String actualContents = versionsManager.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 	@Test
-	void test4() {
+	public void test4() {
 		
-		latexEditorController.setType("bookTemplate");
+		versionsManager.setType("bookTemplate");
 		createCommand.execute();
 		
-		String contents = "\\documentclass[11pt,a4paper]{book}\n\n"+
-
-				"\\begin{document}\n"+
-				"\\title{Book: How to Structure a LaTeX Document}\n"+
-				"\\author{Author1 \\and Author2 \\and ...}\n"+
-				"\\date{\\today}\n\n"+
-
-				"\\maketitle\n\n"+
-
-				"\\frontmatter\n\n"+
-
-				"\\chapter{Preface}\n"+
-				"% ...\n\n"+
-
-				"\\mainmatter\n"+
-				"\\chapter{First chapter}\n"+
-				"\\section{Section Title 1}\n"+
-				"\\section{Section Title 2}\n\n"+
-
-				"\\section{Section Title.....}\n\n"+
-
-				"\\chapter{....}\n\n"+
-
-				"\\chapter{Conclusion}\n\n"+
-
-				"\\chapter*{References}\n\n\n"+
-
-
-				"\\backmatter\n"+
-				"\\chapter{Last note}\n\n"+
-
-				"\\end{document}\n";
-		String actualContents = latexEditorController.getVersionsManager().getCurrentDocument().getContents();
+		String contents = "\\documentclass[11pt,a4paper]{book}\r\n" + 
+				"\\usepackage{graphicx}\r\n" + 
+				" \r\n" + 
+				"\\begin{document}\r\n" + 
+				"\r\n" + 
+				"\\title{Book: How to Structure a LaTeX Document} \r\n" + 
+				"\\author{Author1 \\and Author2 \\and ...} \r\n" + 
+				"\\date{\\today}\r\n" + 
+				"\r\n" + 
+				"\\maketitle\r\n" + 
+				" \r\n" + 
+				"\\frontmatter\r\n" + 
+				" \r\n" + 
+				"\\chapter{Preface}\r\n" + 
+				" \r\n" + 
+				"\\mainmatter\r\n" + 
+				" \r\n" + 
+				"\\chapter{First chapter}\r\n" + 
+				" \r\n" + 
+				"\\section{Section Title 1} \r\n" + 
+				"\\section{Section Title 2} \r\n" + 
+				"\\section{Section Title.....}\r\n" + 
+				" \r\n" + 
+				"\\chapter{....}\r\n" + 
+				" \r\n" + 
+				"\\chapter{Conclusion}\r\n" + 
+				" \r\n" + 
+				"\\chapter*{References}\r\n" + 
+				" \r\n" + 
+				"\\backmatter\r\n" + 
+				" \r\n" + 
+				"\\chapter{Last note}\r\n" + 
+				"\r\n" + 
+				"\\end{document}";
+		String actualContents = versionsManager.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 	
 	@Test
-	void test5() {
+	public void test5() {
 	
-		latexEditorController.setType("emptyTemplate");
+		versionsManager.setType("emptyTemplate");
 		createCommand.execute();
 		
 		String contents = "";
-		String actualContents = latexEditorController.getVersionsManager().getCurrentDocument().getContents();
-		
+		String actualContents = versionsManager.getCurrentDocument().getContents();
 		assertEquals(contents, actualContents);
 	}
 }
