@@ -1,6 +1,8 @@
 package controller.commands;
 
 import model.VersionsManager;
+import model.strategies.StableVersionsStrategy;
+import model.strategies.VolatileVersionsStrategy;
 
 public class EnableVersionsManagementCommand extends CommandTemplate {
 	
@@ -11,8 +13,12 @@ public class EnableVersionsManagementCommand extends CommandTemplate {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-		versionsManager.enableStrategy();
+		if(versionsManager.getStrategy() instanceof VolatileVersionsStrategy) {
+			versionsManager.enable();
+		}
+		else if(versionsManager.getStrategy() instanceof StableVersionsStrategy) {
+			versionsManager.enable();
+		}
 	}
 
 }

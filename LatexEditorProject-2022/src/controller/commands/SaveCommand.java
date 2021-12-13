@@ -10,7 +10,7 @@ public class SaveCommand extends CommandTemplate {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		versionsManager.saveToFile();
+		versionsManager.getCurrentDocument().save(versionsManager.getFilename());
 	}
 
 }
