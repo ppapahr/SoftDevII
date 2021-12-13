@@ -10,7 +10,7 @@ import controller.commands.AddLatexCommand;
 public class LatexEditorController{
 	private HashMap<String, Command> commands;
 	private VersionsManager versionsManager;
-	private String [] stringNames = new String [] {"addLatex", "changeVersionsStrategy","create","disableVersionsManagement","edit","enableVersionsManagement","load","rollbackToPreviousVersion","save"};
+	private String [] stringNames = new String [] {"addLatex", "changeVersionsStrategy","create","disableVersionsManagement","edit","enableVersionsManagement","load","rollbackToPreviousVersion","save","saveHTML"};
 	private AddLatexCommand addLatexCommand;
 
 	public LatexEditorController(VersionsManager versionsManager) {

@@ -129,6 +129,25 @@ public class MainWindow {
 		});
 		mnFile.add(mntmSaveFile);
 		
+		
+		JMenuItem mntmSaveAsHTML = new JMenuItem("Save as HTML");
+		mntmSaveAsHTML.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser filechooser = new JFileChooser();
+				int option = filechooser.showSaveDialog(null);
+				if(option == JFileChooser.APPROVE_OPTION) {
+					String filename = filechooser.getSelectedFile().toString();
+					if(filename.endsWith(".html") == false) {
+						filename = filename+".html";
+					}
+					versionsManager.setFilename(filename);
+					versionsManager.getController().enact("saveHTML");
+				}
+				
+			}
+		});
+		mnFile.add(mntmSaveAsHTML);
+		
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
