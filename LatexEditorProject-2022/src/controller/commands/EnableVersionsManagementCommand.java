@@ -13,12 +13,7 @@ public class EnableVersionsManagementCommand extends CommandTemplate {
 
 	@Override
 	public void execute() {
-		if(versionsManager.getStrategy() instanceof VolatileVersionsStrategy) {
-			versionsManager.enable();
-		}
-		else if(versionsManager.getStrategy() instanceof StableVersionsStrategy) {
-			versionsManager.enable();
-		}
+		versionsManager.enable();
 	}
 
 }
