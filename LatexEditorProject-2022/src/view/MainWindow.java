@@ -244,8 +244,8 @@ public class MainWindow {
 		JCheckBoxMenuItem menuStable = new JCheckBoxMenuItem("Stable");
 		menuStable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				versionsManager.setStrategy(new StableVersionsStrategy());
 				if(versionsManager.isEnabled() == false) {
+					versionsManager.setStrategy(new StableVersionsStrategy());
 					versionsManager.getController().enact("enableVersionsManagement");
 				}
 				else {
@@ -259,9 +259,8 @@ public class MainWindow {
 
 		menuVolatile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				versionsManager.setStrategy(new VolatileVersionsStrategy());
 				if(versionsManager.isEnabled() == false) {
+					versionsManager.setStrategy(new VolatileVersionsStrategy());
 					versionsManager.getController().enact("enableVersionsManagement");
 				}
 				else {
@@ -280,6 +279,10 @@ public class MainWindow {
 		mntmDisable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				versionsManager.getController().enact("disableVersionsManagement");
+				menuVolatile.setSelected(false);
+				menuStable.setSelected(false);
+				menuStable.setEnabled(true);
+				menuVolatile.setEnabled(true);
 			}
 		});
 		mnStrategy.add(mntmDisable);
